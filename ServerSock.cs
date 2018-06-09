@@ -35,7 +35,9 @@ public class ServerSocket
 
     public static void Server()
     {
-                string externalip = new WebClient().DownloadString("http://icanhazip.com");
+    Console.Clear();
+    string externalip = new WebClient().DownloadString("http://icanhazip.com");
+
     bool ServerStatus = true;
     string ServerMessage = "";
     string ClientMessage = "";
@@ -58,7 +60,7 @@ public class ServerSocket
             {
                 ServerMessage = streamread.ReadLine();
                 Console.WriteLine(ServerMessage);
-                Console.WriteLine(Nickname+": ");
+                Console.Write(Nickname+": ");
                 ClientMessage = Nickname + ": " + Console.ReadLine();
                 streamwrite.WriteLine(ClientMessage);
                 streamwrite.Flush();
@@ -68,6 +70,7 @@ public class ServerSocket
 
     public static void Client()
     {
+        Console.Clear();
         TcpClient socketForServer;
         bool ServerStatus = true;
         Console.WriteLine("Please type the Server Address");
@@ -93,7 +96,7 @@ public class ServerSocket
             string ServerMessage = "";
             while (ServerStatus)
             {
-                Console.WriteLine(Nickname + ": ");
+                Console.Write(Nickname + ": ");
                 ClientMessage = Console.ReadLine();
                 if ((ClientMessage == "/exit"))
                 {
